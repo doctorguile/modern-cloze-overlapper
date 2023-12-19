@@ -1,3 +1,21 @@
+// Anki 2.1 on MacOS 14.2 Sonoma, Array.findLast is not implemented, use polyfill from below
+// https://medium.com/@stheodorejohn/findlast-method-polyfill-in-javascript-bridging-browser-gaps-c3baf6aabae1
+if (!Array.prototype.findLast) {
+  Array.prototype.findLast = function(callback) {
+    if (this == null) {
+      throw new TypeError('this is null or not defined');
+    }
+    const arr = Object(this);
+    const len = arr.length >>> 0;
+    for (let i = len - 1; i >= 0; i--) {
+      if (callback(arr[i], i, arr)) {
+        return arr[i];
+      }
+    }
+    return undefined;
+  };
+}
+
 /**
  * @param {number} begin
  * @param {number} [end]
