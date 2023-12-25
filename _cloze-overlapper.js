@@ -1,5 +1,3 @@
-// Anki 2.1 on MacOS 14.2 Sonoma, Array.findLast is not implemented, use polyfill from below
-// https://medium.com/@stheodorejohn/findlast-method-polyfill-in-javascript-bridging-browser-gaps-c3baf6aabae1
 if (!Array.prototype.findLast) {
   Array.prototype.findLast = function(callback) {
     if (this == null) {
@@ -681,7 +679,7 @@ const CONFIG_SPLIT_RE = /[,\s|.]+/;
  */
 function parseConfig(elementId = 'cloze-config') {
     const config = /** @type {string} */ (
-        /** @type {HTMLTemplateElement} */ (document.getElementById(elementId)).content.textContent
+        /** @type {HTMLTemplateElement} */ (document.getElementById(elementId)).content.textContent.trim()
     ).split(CONFIG_SPLIT_RE);
 
     return {

@@ -30,7 +30,8 @@ How to Use
    __ https://docs.ankiweb.net/media.html#manually-adding-media
 
 #. Create a new note type by cloning the built-in Cloze.
-#. Add a rendering configuration field named ``Before|After|OnlyContext|RevealAll|InactiveHints``.
+#. Rename the field ``Back Extra`` to ``Extra``
+#. Add a rendering configuration field named ``Settings`` whose value you can set as to a comma separated list corresponding to ``Before,After,OnlyContext,RevealAll,InactiveHints``.
 #. Put the content of `<front.template.anki>`_ into note's Front Template.
 #. Put the content of `<back.template.anki>`_ into note's Back Template.
 #. (Optional AnkiDroid compatibility) Add
@@ -49,8 +50,8 @@ How to Use
 Rendering Configuration
 -----------------------
 
-Template's field ``Before|After|OnlyContext|RevealAll|InactiveHints`` controls the rendering
-of clozes. Individual parameters are separated by either spaces, commas, pipes or dots.
+Template's field ``Settings`` whose value you can set as to a comma separated list corresponding to ``Before,After,OnlyContext,RevealAll,InactiveHints``
+controls the rendering of clozes. Individual parameters are separated by either spaces, commas, pipes or dots.
 Omitted rightmost parameters all take default values.
 
 The parameters are as follows:
@@ -64,8 +65,11 @@ The parameters are as follows:
 ``OnlyContext`` (Boolean ``true`` or ``false``, defaults to ``false``)
   Show clozes only within the context (before + current + after).
   Set to ``true`` for e.g. long lyrics/poems.
+  e.g. ``{{c1::A}} {{c2::B}} {{c3::C}} {{c4::D}} {{c5::E}}`` with ``1,1,true`` and current Cloze on ``c3``, you will see
+  ``B [...] D`` instead of ``[...] B [...] D [...]`` 
+  
 
-``RevelAll`` (Boolean ``true`` or ``false``, defaults to ``false``)
+``RevealAll`` (Boolean ``true`` or ``false``, defaults to ``false``)
   Reveal all clozes on the back of the card. By default, only currently active clozes are revealed.
   (Context clozes are revealed even on cards' fronts.)
 
